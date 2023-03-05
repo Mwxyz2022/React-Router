@@ -19,6 +19,7 @@ const Users = () => {
         <Route exact path="/users">
           <span>Select a user please</span>
         </Route>
+
         <Route exact path="/users/:userId" component={User} />
       </Switch>
     </div>

@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import Spinner from './Spinner';
 
 import { fetchUser } from '../gateway/events';
 
 const User = ({ match }) => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+
   const userId = match.params.userId;
 
   useEffect(() => {
     fetchUser(userId).then(userData => {
       setUser(userData);
-      //   console.log(userData);
+      setLoading(false);
     });
+    return () => {
+      setLoading(true);
+    };
   }, [userId]);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="user">
