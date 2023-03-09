@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import { fetchUser } from '../gateway/events';
 
 const User = ({ match }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const userId = match.params.userId;
