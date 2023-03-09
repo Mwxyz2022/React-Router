@@ -12,14 +12,13 @@ const User = ({ match }) => {
 
   const userId = match.params.userId;
 
-  console.log(user);
-
   useEffect(() => {
     fetchUser(userId)
       .then(userData => {
         setUser(userData);
       })
       .catch(error => {
+        console.error(error.message);
         alert(error.message);
       })
       .finally(() => setLoading(false));
