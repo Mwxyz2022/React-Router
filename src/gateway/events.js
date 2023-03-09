@@ -10,5 +10,6 @@ export const fetchUser = userId =>
     })
     .catch(error => {
       console.error(error);
+
       alert(error.message);
     });

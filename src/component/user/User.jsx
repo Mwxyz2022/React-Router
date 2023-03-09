@@ -12,6 +12,8 @@ const User = ({ match }) => {
 
   const userId = match.params.userId;
 
+  console.log(user);
+
   useEffect(() => {
     fetchUser(userId)
       .then(userData => {
