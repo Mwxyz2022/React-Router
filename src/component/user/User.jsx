@@ -17,10 +17,6 @@ const User = ({ match }) => {
       .then(userData => {
         setUser(userData);
       })
-      .catch(error => {
-        console.error(error.message);
-        alert(error.message);
-      })
       .finally(() => setLoading(false));
 
     return () => {
