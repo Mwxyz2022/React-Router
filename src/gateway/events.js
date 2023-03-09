@@ -1,15 +1,14 @@
-const apiUrl = 'https://api.github.com/users';
+const apiUrl = 'https://api.githubr.com/users';
 
-export const fetchUser = userId =>
-  fetch(`${apiUrl}/${userId}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Server Error!`);
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error(error);
-
-      alert(error.message);
-    });
+export const fetchUser = async userId => {
+  try {
+    const response = await fetch(`${apiUrl}/${userId}`);
+    if (!response.ok) {
+      return null;
+    }
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    throw new Error(`Failed to fetch user!`);
+  }
+};

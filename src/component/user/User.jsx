@@ -17,8 +17,10 @@ const User = ({ match }) => {
   useEffect(() => {
     fetchUser(userId)
       .then(userData => {
+        console.log(userData);
         setUser(userData);
       })
+      .catch(error => alert(error.message))
       .finally(() => setLoading(false));
 
     return () => {
