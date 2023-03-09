@@ -1,21 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Home from './component/Home';
-import Users from './component/Users';
+import Home from './component/home/Home';
+import Users from './component/users/Users';
+import Navigation from './component/navigation/Navigation';
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <div className="page">
-          <ul className="navigation">
-            <li className="navigation__item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="navigation__item">
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
+          <Route path="/" component={Navigation} />
           <Route path="/users">
             <Users />
           </Route>
