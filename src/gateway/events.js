@@ -1,4 +1,4 @@
-const apiUrl = 'https://api.githubr.com/users';
+const apiUrl = 'https://api.github.com/users';
 
 export const fetchUser = async userId => {
   try {
