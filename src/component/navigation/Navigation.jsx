@@ -3,30 +3,31 @@ import { Link } from 'react-router-dom';
 
 import './navigation.scss';
 
+const links = {
+  headerLinks: [
+    { title: 'Home', urlTo: '/' },
+    { title: 'Users', urlTo: '/users' },
+  ],
+  usersLinks: [
+    { title: 'Github', urlTo: '/users/github' },
+    { title: 'Facebook', urlTo: '/users/facebook' },
+  ],
+};
+
 const Navigation = ({ match }) => {
   const path = match.path;
 
-  if (path === '/') {
-    return (
-      <ul className="navigation">
-        <li className="navigation__item">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="navigation__item">
-          <Link to="/users">Users</Link>
-        </li>
-      </ul>
-    );
-  }
+  const getItem = arrLinks => {
+    return arrLinks.map(link => (
+      <li className="navigation__item" key={link.title}>
+        <Link to={link.urlTo}>{link.title}</Link>
+      </li>
+    ));
+  };
 
   return (
     <ul className="navigation">
-      <li className="navigation__item">
-        <Link to="/users/github">Github</Link>
-      </li>
-      <li className="navigation__item">
-        <Link to="/users/facebook">Facebook</Link>
-      </li>
+      {path === '/' ? getItem(links.headerLinks) : getItem(links.usersLinks)}
     </ul>
   );
 };
